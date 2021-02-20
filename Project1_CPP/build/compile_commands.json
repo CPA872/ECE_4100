@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/cx872/Documents/ECE_4100/Project1_CPP/build",
+  "command": "/bin/g++-9    -g   -std=c++11 -o CMakeFiles/cachesim.dir/src/cachesim_driver.cpp.o -c /home/cx872/Documents/ECE_4100/Project1_CPP/src/cachesim_driver.cpp",
+  "file": "/home/cx872/Documents/ECE_4100/Project1_CPP/src/cachesim_driver.cpp"
+},
+{
+  "directory": "/home/cx872/Documents/ECE_4100/Project1_CPP/build",
+  "command": "/bin/g++-9    -g   -std=c++11 -o CMakeFiles/cachesim.dir/src/cache.cpp.o -c /home/cx872/Documents/ECE_4100/Project1_CPP/src/cache.cpp",
+  "file": "/home/cx872/Documents/ECE_4100/Project1_CPP/src/cache.cpp"
+}
+]

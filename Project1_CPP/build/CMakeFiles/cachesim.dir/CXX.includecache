@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cx872/Documents/ECE_4100/Project1_CPP/src/cache.cpp
+cstdarg
+-
+cinttypes
+-
+cstdio
+-
+cstdbool
+-
+cstdlib
+-
+cstring
+-
+iostream
+-
+cache.hpp
+/home/cx872/Documents/ECE_4100/Project1_CPP/src/cache.hpp
+
+/home/cx872/Documents/ECE_4100/Project1_CPP/src/cache.hpp
+cstdarg
+-
+cinttypes
+-
+cstdio
+-
+cstdbool
+-
+cstdlib
+-
+cstring
+-
+

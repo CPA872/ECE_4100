@@ -52,65 +52,37 @@ uint64_t bit_extract(uint64_t addr, pair<int, int> range)
     return ((mask & addr) >> low);
 }
 
-
-// cache block, the most basic unit of a cache
-// size = 16
+// cache block, the most basic unit of a cach
 struct cache_block_t
 {
     bool valid;
     bool dirty;
 
     uint64_t tag;
+    uint64_t vc_tag;
     uint64_t frequency;
     uint64_t timestamp;
     uint64_t first_timestamp; // timestamp when the block is FIRST brought in, not updated by subsequent accesses
-
-    void ident()
-    {
-        printf("struct cache_block_t, size=%lu, valid=%d, dirty=%d\n", sizeof(cache_block_t), valid, dirty);
-    }
-};
-
-struct victim_cache_block_t
-{
-    uint64_t tag;  // Here timestamp is tag + index
-    uint64_t timestamp;
 };
 
 // Secondary unit of a cache: cache set
-// size = 8
 struct cache_set_t
 {
     cache_block_t* blocks;
     cache_block_t* most_recently_used;
-
-    void ident()
-    {
-        printf("struct cache_set_t, size=%lu\n", sizeof(cache_set_t));
-    }
 };
 
 struct victim_cache_t
 {
-    victim_cache_block_t* vc_blocks;
-
-    void ident()
-    {
-        printf("struct victim_cache_t, size=%lu\n", sizeof(victim_cache_block_t));
-    }
+    cache_block_t* vc_blocks;
 };
 
 struct cache_t
 {
     cache_set_t* sets;
-
-    void ident()
-    {
-        printf("struct cache_t, size=%lu\n", sizeof(cache_t));
-    }
 };
 
-
+// Globals for convenience
 uint64_t c;
 uint64_t b;
 uint64_t s;
@@ -129,9 +101,9 @@ pair<int, int> index_range;
 pair<int, int> offset_range;
 pair<int, int> vc_tag_range;
 
-// OH LORD HE COMING: THE CACHE
+// OH LAWD HE COMIN: THE CACHE
 cache_t cache;
-victim_cache_t victum_cache;
+victim_cache_t victim_cache;
 
 /**
  * Function to initialize any data structures you might need for simulating the cache hierarchy. Use
@@ -167,14 +139,16 @@ void sim_init(struct sim_config_t *sim_conf)
     printf("    Extract cache dimensions: C=%lu  B=%lu  S=%lu, %lu sets, %lu ways\n", c, b, s, num_sets, num_ways);
     printf("    Address breakdown: [Tag=%lub] [Index=%lub] [Offset=%lub] \n", tag_length, index_length, offset_length);
     printf("                       [%d Tag %d] [%d Index %d] [%d Offset %d]\n", tag_range.first, tag_range.second, index_range.first, index_range.second, offset_range.first, offset_range.second);
+    printf("                       [%d VC_Tag %d] [%d Offset %d]\n", vc_tag_range.first, vc_tag_range.second, offset_range.first, offset_range.second);
 
-    // Initialization of structs
+    // Initialize L1
     auto* sets = new cache_set_t[num_sets];
     for (int i = 0; i < num_sets; i++) {
         sets[i].blocks = new cache_block_t[num_ways];
         sets[i].most_recently_used = nullptr;
         for (int j = 0; j < num_ways; ++j) {
             sets[i].blocks[j].tag = 0;
+            sets[i].blocks[j].vc_tag = 0;
             sets[i].blocks[j].frequency = 0;
             sets[i].blocks[j].timestamp = 0;
             sets[i].blocks[j].first_timestamp = 0;
@@ -184,11 +158,17 @@ void sim_init(struct sim_config_t *sim_conf)
     }
     cache.sets = sets;
 
+    // Initialize VC
     if (vc_size > 0) {
-        victum_cache.vc_blocks = new victim_cache_block_t[vc_size];
+        victim_cache.vc_blocks = new cache_block_t[vc_size];
         for (int i = 0; i < vc_size; ++i) {
-            victum_cache.vc_blocks[i].tag = 0;
-            victum_cache.vc_blocks[i].timestamp = 0;
+            victim_cache.vc_blocks[i].tag = 0;
+            victim_cache.vc_blocks[i].vc_tag = 0;
+            victim_cache.vc_blocks[i].frequency = 0;
+            victim_cache.vc_blocks[i].timestamp = 0;
+            victim_cache.vc_blocks[i].first_timestamp = 0;
+            victim_cache.vc_blocks[i].valid = false;
+            victim_cache.vc_blocks[i].dirty= false;
         }
     }
 
@@ -225,11 +205,10 @@ void cache_access(uint64_t addr, char type, struct sim_stats_t *sim_stats, struc
         sim_stats->l1data_num_accesses_stores += 1;
 
     uint64_t tag    = bit_extract(addr, tag_range);
+    uint64_t vc_tag = bit_extract(addr, vc_tag_range);
     uint64_t index  = fully_associative_flag ? 0 : bit_extract(addr, index_range); // fully associative always get index 0
-    uint64_t offset = bit_extract(addr, offset_range);
 
     bool miss_flag = true;
-
     cache_set_t* current_set = &cache.sets[index];
 
     for (int i = 0; i < num_ways; ++i)
@@ -241,6 +220,7 @@ void cache_access(uint64_t addr, char type, struct sim_stats_t *sim_stats, struc
             current_block->frequency += 1;
             current_set->most_recently_used = current_block;
 
+            // if writing to a block in L1, mark it dirty
             if (type == 'S') {
                 current_block->dirty = true;
             }
@@ -252,6 +232,7 @@ void cache_access(uint64_t addr, char type, struct sim_stats_t *sim_stats, struc
 //  **    L1 MISS    **
 //  ===================
     if (miss_flag) {
+        // update miss stats
         sim_stats->l1data_num_misses += 1;
         if (vc_size > 0)
             sim_stats->victim_cache_accesses += 1;
@@ -260,8 +241,30 @@ void cache_access(uint64_t addr, char type, struct sim_stats_t *sim_stats, struc
         if (type == 'S')
             sim_stats->l1data_num_misses_stores += 1;
 
-        cache_block_t* block_to_evict = nullptr;
+        bool vc_hit_flag = false;
+        cache_block_t* vc_hit_block = nullptr;
 
+        // Search for VC Hit
+        if (vc_size > 0) {
+            for (int i = 0; i < vc_size; ++i) {
+                cache_block_t* current_vc_block = &victim_cache.vc_blocks[i];
+                // VC HIT
+                if (current_vc_block->vc_tag == vc_tag) {
+                    vc_hit_block = current_vc_block;
+                    vc_hit_flag = true;
+                    if (type == 'S' && !vc_hit_block->dirty)
+                        vc_hit_block->dirty = true;
+                    break;
+                }
+            }
+            if (vc_hit_flag)
+                sim_stats->victim_cache_hits += 1;
+            if (!vc_hit_flag)
+                sim_stats->victim_cache_misses += 1;
+        }
+
+        cache_block_t* block_to_evict = nullptr;
+        // This switch is to find the above block_to_evict under different replacement policies
         switch (sim_conf->rp)
         {
             case LRU: {
@@ -335,28 +338,100 @@ void cache_access(uint64_t addr, char type, struct sim_stats_t *sim_stats, struc
             print_error_exit("[ERROR] Did not find block to evict\n");
         }
 
-        // Kick out old block
-        if (block_to_evict->dirty) { // write back
-            sim_stats->num_writebacks += 1;
-            sim_stats->bytes_transferred_to_mem += (int) pow(2, b);
-        }
-        // If previous block was valid, update eviction
-        if (block_to_evict->valid) {
+//      =====================================================
+//      ==  L1 MISS, VC HIT: swap block between L1 and VC  ==
+//      =====================================================
+        if (vc_size > 0 && vc_hit_flag && block_to_evict->valid) {
+            // Swap the following two using memcpy
+            // VC: vc_hit_block
+            // L1: block_to_evict
+            cache_block_t* temp = new cache_block_t;
+            memcpy(temp, block_to_evict, sizeof(cache_block_t));
+            memcpy(block_to_evict, vc_hit_block, sizeof(cache_block_t));
+            memcpy(vc_hit_block, temp, sizeof(cache_block_t));
+            delete temp;
+
+            vc_hit_block->timestamp = global_clock;
+            vc_hit_block->first_timestamp = global_clock;
+            block_to_evict->timestamp = global_clock;
+            block_to_evict->first_timestamp = global_clock;
+            block_to_evict->frequency = 1;
+
+//            if (type == 'S')
+//                block_to_evict->dirty = true;
+
+            current_set->most_recently_used = block_to_evict;
+
             sim_stats->l1data_num_evictions += 1;
+            return;
         }
-        // Bring in new block
+
+//      ==========================================================================
+//      ==  L1 MISS, VC MISS : L1 block to VC, VC evict block, new block to L1  ==
+//      ==========================================================================
+        if (vc_size > 0 && !vc_hit_flag) {
+            uint64_t min_timestamp = UINT64_MAX;
+            cache_block_t* vc_evict_block = nullptr;
+
+            // find the VC block to evict under FIFO policy
+            for (int i = 0; i < vc_size; ++i) {
+                // if VC has empty (invalid) block, use it first
+                if (!victim_cache.vc_blocks[i].valid) {
+                    vc_evict_block = &victim_cache.vc_blocks[i];
+                    break;
+                }
+                if (victim_cache.vc_blocks[i].timestamp < min_timestamp){
+                    min_timestamp = victim_cache.vc_blocks[i].timestamp;
+                    vc_evict_block = &victim_cache.vc_blocks[i];
+                }
+            }
+
+            if (vc_evict_block == nullptr)
+                print_error_exit("Did not find VC block to evict");
+
+            // if evicting a dirty block from VC, must update writeback
+            if (vc_evict_block->valid && vc_evict_block->dirty) {
+                sim_stats->num_writebacks += 1;
+                sim_stats->bytes_transferred_to_mem += (int) pow(2, b);
+            }
+
+            // move valid block from L1 to VC
+            if (block_to_evict->valid) {
+                memcpy(vc_evict_block, block_to_evict, sizeof(cache_block_t));
+                vc_evict_block->timestamp = global_clock;
+                vc_evict_block->first_timestamp = global_clock;
+                vc_evict_block->frequency = 0;
+
+                sim_stats->l1data_num_evictions += 1;
+            }
+        } // end if (L1 + VC MISS)
+
+//      =========================================================
+//      ==  L1 MISS (no VC) : L1 evict block, new block to L1  ==
+//      =========================================================
+        if (vc_size == 0) {
+            if (block_to_evict->dirty) { // write back
+                sim_stats->num_writebacks += 1;
+                sim_stats->bytes_transferred_to_mem += (int) pow(2, b);
+            }
+            // If previous block was valid, update eviction
+            if (block_to_evict->valid) {
+                sim_stats->l1data_num_evictions += 1;
+            }
+        } // end if (entire cache MISS)
+
+        // Bring in a new block to L1
         block_to_evict->valid = true;
         block_to_evict->dirty = (type != 'L');
         block_to_evict->tag = tag;
+        block_to_evict->vc_tag = vc_tag;
         block_to_evict->timestamp = global_clock;
         block_to_evict->first_timestamp = global_clock;
         block_to_evict->frequency = 1;
-
         current_set->most_recently_used = block_to_evict;
         sim_stats->bytes_transferred_from_mem += (int) pow(2, b);
-    } // end if (cache MISS)
 
-    if (DEBUG) cout << endl;
+    } // end if (L1 MISS)
 }
 
 
@@ -372,8 +447,15 @@ void sim_cleanup(struct sim_stats_t *sim_stats, struct sim_config_t *sim_conf)
         delete [] cache.sets[i].blocks;
     }
     delete [] cache.sets;
+    delete [] victim_cache.vc_blocks;
 
     sim_stats->l1data_miss_penalty = 60;
     sim_stats->l1data_miss_rate = (double) sim_stats->l1data_num_misses / sim_stats->l1data_num_accesses;
-    sim_stats->avg_access_time = sim_stats->l1data_hit_time + sim_stats->l1data_miss_rate * sim_stats->l1data_miss_penalty;
+
+    if (vc_size > 0) {
+        sim_stats->victim_cache_miss_rate = (double) sim_stats->victim_cache_misses / sim_stats->victim_cache_accesses;
+        sim_stats->avg_access_time = sim_stats->l1data_hit_time + sim_stats->l1data_miss_rate * sim_stats->victim_cache_miss_rate * sim_stats->l1data_miss_penalty;
+    } else {
+        sim_stats->avg_access_time = sim_stats->l1data_hit_time + sim_stats->l1data_miss_rate * sim_stats->l1data_miss_penalty;
+    }
 }

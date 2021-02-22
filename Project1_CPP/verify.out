@@ -4,13 +4,17 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6279033
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3720967
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -35,13 +39,87 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               5885584
-L1 Data Store Accesses              0
+L1 Data Store Accesses              4114416
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    3.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: mm_basic_192.trace
+CONF: basic.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=12, B=6, S=3)
+Replacement Policy:    LRU
+Victim Cache:          no; V:0
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    233903816
+L1 Data Load Accesses               219673924
+L1 Data Store Accesses              14229890
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    3.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: mm_tiled_192_4.trace
+CONF: basic.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=12, B=6, S=3)
+Replacement Policy:    LRU
+Victim Cache:          no; V:0
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    256928744
+L1 Data Load Accesses               238123396
+L1 Data Store Accesses              18805346
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -66,13 +144,52 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6341580
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3658420
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    3.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: short.trace
+CONF: basic.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=12, B=6, S=3)
+Replacement Policy:    LRU
+Victim Cache:          no; V:0
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    100
+L1 Data Load Accesses               62
+L1 Data Store Accesses              38
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -97,13 +214,17 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6128778
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3871222
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -128,13 +249,17 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    FIFO
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6279033
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3720967
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -159,13 +284,87 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    FIFO
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               5885584
-L1 Data Store Accesses              0
+L1 Data Store Accesses              4114416
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    3.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: mm_basic_192.trace
+CONF: basic_fifo.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=12, B=6, S=3)
+Replacement Policy:    FIFO
+Victim Cache:          no; V:0
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    233903816
+L1 Data Load Accesses               219673924
+L1 Data Store Accesses              14229890
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    3.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: mm_tiled_192_4.trace
+CONF: basic_fifo.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=12, B=6, S=3)
+Replacement Policy:    FIFO
+Victim Cache:          no; V:0
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    256928744
+L1 Data Load Accesses               238123396
+L1 Data Store Accesses              18805346
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -190,13 +389,52 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    FIFO
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6341580
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3658420
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    3.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: short.trace
+CONF: basic_fifo.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=12, B=6, S=3)
+Replacement Policy:    FIFO
+Victim Cache:          no; V:0
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    100
+L1 Data Load Accesses               62
+L1 Data Store Accesses              38
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -221,13 +459,17 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    FIFO
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6128778
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3871222
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -252,13 +494,17 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    LFU
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6279033
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3720967
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -283,13 +529,87 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    LFU
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               5885584
-L1 Data Store Accesses              0
+L1 Data Store Accesses              4114416
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    3.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: mm_basic_192.trace
+CONF: basic_lfu.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=12, B=6, S=3)
+Replacement Policy:    LFU
+Victim Cache:          no; V:0
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    233903816
+L1 Data Load Accesses               219673924
+L1 Data Store Accesses              14229890
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    3.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: mm_tiled_192_4.trace
+CONF: basic_lfu.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=12, B=6, S=3)
+Replacement Policy:    LFU
+Victim Cache:          no; V:0
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    256928744
+L1 Data Load Accesses               238123396
+L1 Data Store Accesses              18805346
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -314,13 +634,52 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    LFU
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6341580
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3658420
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    3.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: short.trace
+CONF: basic_lfu.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=12, B=6, S=3)
+Replacement Policy:    LFU
+Victim Cache:          no; V:0
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    100
+L1 Data Load Accesses               62
+L1 Data Store Accesses              38
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -345,13 +704,17 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    LFU
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6128778
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3871222
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -376,13 +739,17 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=15, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6279033
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3720967
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -407,13 +774,87 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=15, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               5885584
-L1 Data Store Accesses              0
+L1 Data Store Accesses              4114416
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    4.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: mm_basic_192.trace
+CONF: big_basic.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=15, B=6, S=3)
+Replacement Policy:    LRU
+Victim Cache:          no; V:0
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    233903816
+L1 Data Load Accesses               219673924
+L1 Data Store Accesses              14229890
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    4.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: mm_tiled_192_4.trace
+CONF: big_basic.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=15, B=6, S=3)
+Replacement Policy:    LRU
+Victim Cache:          no; V:0
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    256928744
+L1 Data Load Accesses               238123396
+L1 Data Store Accesses              18805346
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -438,13 +879,52 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=15, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6341580
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3658420
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    4.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: short.trace
+CONF: big_basic.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=15, B=6, S=3)
+Replacement Policy:    LRU
+Victim Cache:          no; V:0
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    100
+L1 Data Load Accesses               62
+L1 Data Store Accesses              38
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -469,13 +949,17 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=15, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          no; V:0
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6128778
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3871222
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -500,13 +984,17 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=15, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          yes; V:4
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6279033
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3720967
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -531,13 +1019,87 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=15, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          yes; V:4
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               5885584
-L1 Data Store Accesses              0
+L1 Data Store Accesses              4114416
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    4.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: mm_basic_192.trace
+CONF: big_default.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=15, B=6, S=3)
+Replacement Policy:    LRU
+Victim Cache:          yes; V:4
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    233903816
+L1 Data Load Accesses               219673924
+L1 Data Store Accesses              14229890
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    4.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: mm_tiled_192_4.trace
+CONF: big_default.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=15, B=6, S=3)
+Replacement Policy:    LRU
+Victim Cache:          yes; V:4
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    256928744
+L1 Data Load Accesses               238123396
+L1 Data Store Accesses              18805346
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -562,13 +1124,52 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=15, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          yes; V:4
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6341580
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3658420
+L1 Data Misses                      0
+L1 Data Load Misses                 0
+L1 Data Store Misses                0
+L1 Data Evictions                   0
+Victim Cache Accesses               0
+Victim Cache Misses                 0
+Victim Cache Hits                   0
+Number of writebacks                0
+Bytes transferred from Main Memory  0
+Bytes transferred to Main Memory    0
+L1 Data Hit Time                    4.00000000
+L1 Data Miss Penalty                0.00000000
+L1 Data Miss Rate                   0.00000000
+Victim Cache Miss Rate              0.00000000
+Average Access Time                 0.00000000
+
+
+
+TRACE: short.trace
+CONF: big_default.conf
+SIMULATION CONFIGURATION
+L1 Data Cache:         (C=15, B=6, S=3)
+Replacement Policy:    LRU
+Victim Cache:          yes; V:4
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+L1 Data Accesses                    100
+L1 Data Load Accesses               62
+L1 Data Store Accesses              38
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -593,13 +1194,17 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=15, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          yes; V:4
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 15  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 6 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6128778
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3871222
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -624,13 +1229,17 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          yes; V:4
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               6279033
-L1 Data Store Accesses              0
+L1 Data Store Accesses              3720967
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -655,13 +1264,17 @@ SIMULATION CONFIGURATION
 L1 Data Cache:         (C=12, B=6, S=3)
 Replacement Policy:    LRU
 Victim Cache:          yes; V:4
-sim init
+
+
+---- Function sim_init ------
+    Extract cache dimentions: C: 12  B: 6  S: 3
+    Address breakdown: [Tag: 55 bits] [Index: 3 bits] [Offset: 6 bits] 
 SETUP COMPLETE - STARTING SIMULATION
 
 SIMULATION OUTPUT
 L1 Data Accesses                    10000000
 L1 Data Load Accesses               5885584
-L1 Data Store Accesses              0
+L1 Data Store Accesses              4114416
 L1 Data Misses                      0
 L1 Data Load Misses                 0
 L1 Data Store Misses                0
@@ -673,564 +1286,6 @@ Number of writebacks                0
 Bytes transferred from Main Memory  0
 Bytes transferred to Main Memory    0
 L1 Data Hit Time                    3.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: perlbench.trace
-CONF: default.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=12, B=6, S=3)
-Replacement Policy:    LRU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6341580
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    3.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: x264.trace
-CONF: default.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=12, B=6, S=3)
-Replacement Policy:    LRU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6128778
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    3.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: gcc.trace
-CONF: direct_mapped.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=0)
-Replacement Policy:    LRU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6279033
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    2.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: mcf.trace
-CONF: direct_mapped.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=0)
-Replacement Policy:    LRU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               5885584
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    2.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: perlbench.trace
-CONF: direct_mapped.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=0)
-Replacement Policy:    LRU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6341580
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    2.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: x264.trace
-CONF: direct_mapped.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=0)
-Replacement Policy:    LRU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6128778
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    2.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: gcc.trace
-CONF: fifo.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=3)
-Replacement Policy:    FIFO
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6279033
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    4.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: mcf.trace
-CONF: fifo.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=3)
-Replacement Policy:    FIFO
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               5885584
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    4.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: perlbench.trace
-CONF: fifo.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=3)
-Replacement Policy:    FIFO
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6341580
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    4.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: x264.trace
-CONF: fifo.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=3)
-Replacement Policy:    FIFO
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6128778
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    4.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: gcc.trace
-CONF: fully_assoc.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=9)
-Replacement Policy:    LRU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6279033
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    6.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: mcf.trace
-CONF: fully_assoc.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=9)
-Replacement Policy:    LRU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               5885584
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    6.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: perlbench.trace
-CONF: fully_assoc.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=9)
-Replacement Policy:    LRU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6341580
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    6.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: x264.trace
-CONF: fully_assoc.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=9)
-Replacement Policy:    LRU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6128778
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    6.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: gcc.trace
-CONF: lfu.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=3)
-Replacement Policy:    LFU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6279033
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    4.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: mcf.trace
-CONF: lfu.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=3)
-Replacement Policy:    LFU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               5885584
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    4.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: perlbench.trace
-CONF: lfu.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=3)
-Replacement Policy:    LFU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6341580
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    4.00000000
-L1 Data Miss Penalty                0.00000000
-L1 Data Miss Rate                   0.00000000
-Victim Cache Miss Rate              0.00000000
-Average Access Time                 0.00000000
-
-
-
-TRACE: x264.trace
-CONF: lfu.conf
-SIMULATION CONFIGURATION
-L1 Data Cache:         (C=15, B=6, S=3)
-Replacement Policy:    LFU
-Victim Cache:          yes; V:4
-sim init
-SETUP COMPLETE - STARTING SIMULATION
-
-SIMULATION OUTPUT
-L1 Data Accesses                    10000000
-L1 Data Load Accesses               6128778
-L1 Data Store Accesses              0
-L1 Data Misses                      0
-L1 Data Load Misses                 0
-L1 Data Store Misses                0
-L1 Data Evictions                   0
-Victim Cache Accesses               0
-Victim Cache Misses                 0
-Victim Cache Hits                   0
-Number of writebacks                0
-Bytes transferred from Main Memory  0
-Bytes transferred to Main Memory    0
-L1 Data Hit Time                    4.00000000
 L1 Data Miss Penalty                0.00000000
 L1 Data Miss Rate                   0.00000000
 Victim Cache Miss Rate              0.00000000

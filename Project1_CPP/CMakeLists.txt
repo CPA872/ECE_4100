@@ -29,7 +29,7 @@ elseif( "${CMAKE_C_COMPILER_ID}" MATCHES Clang )
 endif()
 
 # Enable debugging using gdb or lldb depending on operating system
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
 
 # Generate executable
 add_executable(cachesim ${SRC_FILES})

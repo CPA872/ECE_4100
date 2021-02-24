@@ -1,3 +1,0 @@
-/home/cx872/Documents/ECE_4100/Project1_CPP/build/CMakeFiles/rebuild_cache.dir
-/home/cx872/Documents/ECE_4100/Project1_CPP/build/CMakeFiles/edit_cache.dir
-/home/cx872/Documents/ECE_4100/Project1_CPP/build/CMakeFiles/cachesim.dir

@@ -23,8 +23,6 @@ iostream
 -
 memory
 -
-cmath
--
 vector
 -
 cache.hpp

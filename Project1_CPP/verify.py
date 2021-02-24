@@ -4,7 +4,7 @@ import subprocess
 
 config_dir = "./config"
 traces_dir = "./traces"
-executable_path = "./cmake-build-debug/cachesim"
+executable_path = "build/cachesim"
 verification_out_filename = "verify.out"
 
 # Get traces and configuration files

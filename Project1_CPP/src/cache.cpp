@@ -15,7 +15,6 @@
 #include <cstring>
 #include <iostream>
 #include <memory>
-#include <cmath>
 #include <vector>
 #include "cache.hpp"
 
@@ -122,8 +121,8 @@ void sim_init(struct sim_config_t *sim_conf)
     index_length  = c - b - s;
     offset_length = b;
     tag_length    = 64 - index_length - offset_length;
-    num_sets      = (int) pow(2, index_length);
-    num_ways      = (int) pow(2, s);
+    num_sets      = (1 << index_length);
+    num_ways      = (1 << s);
     tag_range     = make_pair<int, int>(63, 64 - tag_length);
     vc_tag_range  = make_pair<int, int>(63, offset_length);
     index_range   = make_pair<int, int>(63 - tag_length, 64 - tag_length - index_length);
@@ -381,7 +380,7 @@ void cache_access(uint64_t addr, char type, struct sim_stats_t *sim_stats, struc
             // ATTENTION: Only when l1_evict_block is VALID is there an antual VC eviction
             if (vc_evict_block->valid && l1_evict_block->valid && vc_evict_block->dirty) {
                 sim_stats->num_writebacks += 1;
-                sim_stats->bytes_transferred_to_mem += (int) pow(2, b);
+                sim_stats->bytes_transferred_to_mem += (1 << b);
             }
 
             // move valid block from L1 to VC
@@ -402,7 +401,7 @@ void cache_access(uint64_t addr, char type, struct sim_stats_t *sim_stats, struc
     if (vc_size == 0) {
         if (l1_evict_block->dirty) { // write back
             sim_stats->num_writebacks += 1;
-            sim_stats->bytes_transferred_to_mem += (int) pow(2, b);
+            sim_stats->bytes_transferred_to_mem += (1 << b);
         }
         // If previous block was valid, update eviction
         if (l1_evict_block->valid) {
@@ -420,7 +419,7 @@ void cache_access(uint64_t addr, char type, struct sim_stats_t *sim_stats, struc
     l1_evict_block->frequency       = 1;
     current_set->most_recently_used = l1_evict_block;
 
-    sim_stats->bytes_transferred_from_mem += (int) pow(2, b);
+    sim_stats->bytes_transferred_from_mem += (1 << b); 
 }
 
 

@@ -1,10 +1,11 @@
+
 import os
 import sys
 import subprocess
 
 config_dir = "./config"
 traces_dir = "./traces"
-executable_path = "build/cachesim"
+executable_path = "./build/cachesim"
 verification_out_filename = "verify.out"
 
 # Get traces and configuration files
@@ -36,11 +37,8 @@ if os.path.exists(verification_out_filename):
 
 f = open(verification_out_filename, "a+")
 
-counter = 0
 for conf in config_files:
     for trace in trace_files:
-        counter += 1
-        print("%d out of %d" % (counter, len(config_files) * len(trace_files)))
         run_args = [executable_path, "-c", conf, "-i", trace]
         cp = subprocess.run(run_args, universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 

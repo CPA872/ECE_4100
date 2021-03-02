@@ -86,10 +86,10 @@ static void print_sim_output(struct sim_stats_t *sim_stats)
 // Helper to compare json token strings
 static int jsoneq(const char *json, jsmntok_t *tok, const char *s)
 {
-    if (tok->type == JSMN_STRING && (int)strlen(s) == tok->end - tok->start &&
-        strncmp(json + tok->start, s, (size_t) (tok->end - tok->start)) == 0) {
+  if (tok->type == JSMN_STRING && (int)strlen(s) == tok->end - tok->start &&
+      strncmp(json + tok->start, s, (size_t) (tok->end - tok->start)) == 0) {
     return 0;
-}
+  }
   return -1;
 }
 

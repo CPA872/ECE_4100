@@ -228,6 +228,7 @@ void cache_access(uint64_t addr, char type, struct sim_stats_t *sim_stats, struc
     cache_block_t *l1_evict_block = nullptr;
     switch (sim_conf->rp) {
         case LRU: {
+            label:  // makes sure that when direct-mapped + LFU, it uses LRU as replacement policy
             uint64_t min_timestamp = UINT64_MAX;
             // For loop to determine the least/earliest timestamp for LRU to evict
             for (int i = 0; i < num_ways; ++i) {
@@ -245,6 +246,8 @@ void cache_access(uint64_t addr, char type, struct sim_stats_t *sim_stats, struc
         }
 
         case LFU: { // LFU-notMRU
+            if (sim_conf->l1data.s == 0) // use LRU if direct-mapped
+                goto label;
             uint64_t min_frequency = UINT64_MAX;
             uint64_t max_tag = 0;
 
@@ -298,9 +301,9 @@ void cache_access(uint64_t addr, char type, struct sim_stats_t *sim_stats, struc
         }
     }
 
-    if (l1_evict_block == nullptr) {
-        print_error_exit("[ERROR] Did not find block to evict\n");
-    }
+//    if (l1_evict_block == nullptr) {
+//        print_error_exit("[ERROR] Did not find block to evict\n");
+//    }
 
     cache_block_t* vc_evict_block = nullptr;
     // Search for VC Hit
@@ -372,12 +375,12 @@ void cache_access(uint64_t addr, char type, struct sim_stats_t *sim_stats, struc
                 }
             }
 
-            if (vc_evict_block == nullptr) {
-                print_error_exit("Did not find VC block to evict");
-            }
+//            if (vc_evict_block == nullptr) {
+//                print_error_exit("Did not find VC block to evict");
+//            }
 
             // if evicting a dirty block from VC, must update writeback
-            // ATTENTION: Only when l1_evict_block is VALID is there an antual VC eviction
+            // ATTENTION: Only when l1_evict_block is VALID is there an actual VC eviction
             if (vc_evict_block->valid && l1_evict_block->valid && vc_evict_block->dirty) {
                 sim_stats->num_writebacks += 1;
                 sim_stats->bytes_transferred_to_mem += (1 << b);

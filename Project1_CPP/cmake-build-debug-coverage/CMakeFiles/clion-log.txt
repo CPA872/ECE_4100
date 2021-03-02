@@ -1,0 +1,4 @@
+/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=--coverage -DCMAKE_C_FLAGS=--coverage -G "CodeBlocks - Unix Makefiles" /home/cx872/Documents/ECE_4100/Project1_CPP
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/cx872/Documents/ECE_4100/Project1_CPP/cmake-build-debug-coverage

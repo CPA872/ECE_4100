@@ -1,0 +1,20 @@
+
+SIMULATION OUTPUT
+L1 Data Accesses                    233903816
+L1 Data Load Accesses               219673924
+L1 Data Store Accesses              14229890
+L1 Data Misses                      7900212
+L1 Data Load Misses                 7452447
+L1 Data Store Misses                447764
+L1 Data Evictions                   7899187
+Victim Cache Accesses               7900212
+Victim Cache Misses                 7355916
+Victim Cache Hits                   544296
+Number of writebacks                36800
+Bytes transferred from Main Memory  14711832
+Bytes transferred to Main Memory    73600
+L1 Data Hit Time                    3.00000000
+L1 Data Miss Penalty                60.00000000
+L1 Data Miss Rate                   0.03377547
+Victim Cache Miss Rate              0.93110362
+Average Access Time                 4.88690791

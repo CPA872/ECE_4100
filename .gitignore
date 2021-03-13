@@ -1,3 +1,5 @@
 *.tar
 *.trace
 *.tar.gz
+*.zip
+*.tar

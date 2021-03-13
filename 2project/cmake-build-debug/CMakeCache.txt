@@ -130,7 +130,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=Cache hit-miss simulator
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=cachesim
+CMAKE_PROJECT_NAME:STATIC=branchsim
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -199,6 +199,12 @@ ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
+
+//Value Computed by CMake
+branchsim_BINARY_DIR:STATIC=/home/cx872/Documents/ECE_4100/2project/cmake-build-debug
+
+//Value Computed by CMake
+branchsim_SOURCE_DIR:STATIC=/home/cx872/Documents/ECE_4100/2project
 
 //Value Computed by CMake
 cachesim_BINARY_DIR:STATIC=/home/cx872/Documents/ECE_4100/2project/cmake-build-debug

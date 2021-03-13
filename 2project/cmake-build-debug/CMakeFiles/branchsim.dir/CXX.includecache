@@ -9,6 +9,8 @@
 /home/cx872/Documents/ECE_4100/2project/src/branchsim.cpp
 iostream
 -
+cstring
+-
 branchsim.h
 /home/cx872/Documents/ECE_4100/2project/src/branchsim.h
 gshare.h

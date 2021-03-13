@@ -94,6 +94,9 @@
 		<Unit filename="/home/cx872/Documents/ECE_4100/2project/src/gshare.h">
 			<Option target="branchsim"/>
 		</Unit>
+		<Unit filename="/home/cx872/Documents/ECE_4100/2project/src/utility.h">
+			<Option target="branchsim"/>
+		</Unit>
 		<Unit filename="/home/cx872/Documents/ECE_4100/2project/src/yeh_patt.h">
 			<Option target="branchsim"/>
 		</Unit>

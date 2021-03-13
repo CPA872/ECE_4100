@@ -6,6 +6,40 @@
  *
  * @author <Yue Pan>
  */
+smith_counter::smith_counter() {
+    this->value = 1;
+}
+
+bool smith_counter::predict() {
+    return this->value >= 2;  // 0b10 0b11 -> taken
+}
+
+
+void smith_counter::update(bool branch_taken) {
+    if (branch_taken) {
+        this->value = (this->value < 4) ? this->value + 1 : 4;
+    } else {
+        this->value = (this->value > 0) ? this->value - 1 : 0;
+    }
+}
+
+shift_register::shift_register() {
+    this->value = 0;
+    this->length = 0;
+}
+
+shift_register::shift_register(int length) {
+    this->value = 0;
+    this->length = length;
+}
+
+
+void shift_register::update(int branch_taken) {
+    this->value = this->value << 1;
+    this->value = branch_taken ? this->value | 1 : this->value | 0;
+    this->value = this->value & ((1 << this->length) - 1);
+}
+
 
 #include <cstdarg>
 #include <cinttypes>

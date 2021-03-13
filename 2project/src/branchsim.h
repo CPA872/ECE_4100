@@ -12,7 +12,7 @@ typedef struct branch_t {
     uint64_t ip; // ip = instruction pointer aka. address of the branch instruction
     uint64_t inst_num; // Instruction count of the branch
 
-    bool is_taken;  // Is the branch actuall taken
+    bool is_taken;  // Is the branch actualy taken
 
     branch_t() { }
 

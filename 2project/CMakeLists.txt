@@ -14,7 +14,7 @@ set(SRC_FILES "${CMAKE_SOURCE_DIR}/src/branchsim_driver.cpp"
               "${CMAKE_SOURCE_DIR}/src/branchsim.h"
               "${CMAKE_SOURCE_DIR}/src/gshare.h"
               "${CMAKE_SOURCE_DIR}/src/yeh_patt.h"
-        src/utility.h)
+)
 
 # Sets required flags
 set(CMAKE_CXX_STANDARD 11)
@@ -31,7 +31,7 @@ elseif( "${CMAKE_CXXCOMPILER_ID}" MATCHES Clang )
 endif()
 
 # Enable debugging using gdb or lldb depending on operating system
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
 
 # Generate executable
 add_executable(branchsim ${SRC_FILES})

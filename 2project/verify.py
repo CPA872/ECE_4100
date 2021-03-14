@@ -5,7 +5,7 @@ import subprocess
 import string
 
 traces_dir = './traces'
-executable_path = './build/branchsim'
+executable_path = './cmake-build-debug/branchsim'
 verification_out_filename = 'verify.out'
 
 configs = [ '-O 1 -G 12 -D', '-D -O 1 -G 15', '-D -O 1 -G 8',
@@ -32,9 +32,11 @@ if os.path.exists(verification_out_filename):
     os.remove(verification_out_filename)
 
 f = open(verification_out_filename, 'a+')
-
+count = 0;
 for conf in configs:
     for trace in trace_files:
+        count += 1;
+        print("%d out of %d\n"%(count, len(configs) * len(trace_files)))
         arg_list = conf.split()
         arg_list.insert(0, executable_path)
         arg_list.append('-i')

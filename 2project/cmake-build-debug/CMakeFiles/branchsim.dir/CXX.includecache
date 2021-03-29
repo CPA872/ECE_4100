@@ -6,12 +6,34 @@
 
 #IncludeRegexTransform: 
 
-/home/cx872/Documents/ECE_4100/2project/src/branchsim.cpp
-iostream
+/home/cx872/Documents/ECE_4100/2project/src/branchsim.h
+cstdint
+-
+map
+-
+utility
+-
+
+/home/cx872/Documents/ECE_4100/2project/src/branchsim_driver.cpp
+getopt.h
+-
+unistd.h
+-
+cstdarg
+-
+cinttypes
+-
+cstdio
+-
+cstdbool
+-
+cstdlib
 -
 cstring
 -
-bitset
+iostream
+-
+string
 -
 branchsim.h
 /home/cx872/Documents/ECE_4100/2project/src/branchsim.h
@@ -21,14 +43,6 @@ perceptron.h
 /home/cx872/Documents/ECE_4100/2project/src/perceptron.h
 yeh_patt.h
 /home/cx872/Documents/ECE_4100/2project/src/yeh_patt.h
-
-/home/cx872/Documents/ECE_4100/2project/src/branchsim.h
-cstdint
--
-map
--
-utility
--
 
 /home/cx872/Documents/ECE_4100/2project/src/gshare.h
 branchsim.h

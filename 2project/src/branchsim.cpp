@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cstring>
 #include <bitset>
@@ -15,7 +14,6 @@ branch_predictor_base::~branch_predictor_base() {}
 
 
 // ******* Student Code starts here *******
-
 uint64_t PIPELINE_STAGES = 0;
 
 /**
@@ -77,6 +75,7 @@ void gshare::init_predictor(branchsim_conf *sim_conf)
     this->tag_store     = new uint64_t[1 << sim_conf->G];
 
     memset(this->tag_store, 0, (1ULL << sim_conf->G) * sizeof(uint64_t));
+    // pattern table is initialized to 01
     for (uint64_t i = 0; i < (1ULL << sim_conf->G); i++) {
         this->pattern_table[i] = 1;
     }
@@ -96,6 +95,7 @@ bool gshare::predict(branch *branch, branchsim_stats *sim_stats)
         this->tag_store[index] = tag;
     }
 
+    // 00, 01->NT; 10, 11->TAKEN
     bool prediction = *smith_counter >= 2;
 
     if (prediction == branch->is_taken) {
@@ -127,7 +127,7 @@ gshare::~gshare()
 void yeh_patt::init_predictor(branchsim_conf *sim_conf)
 {
     PIPELINE_STAGES = sim_conf->N;
-
+    // initialized relevant fields
     this->history_table = new uint64_t[1 << sim_conf->G];
     this->pattern_table = new uint8_t[1 << sim_conf->P];
     this->tag_store     = new uint64_t[1 << sim_conf->G];
@@ -137,8 +137,8 @@ void yeh_patt::init_predictor(branchsim_conf *sim_conf)
 
     memset(tag_store, 0, (1ULL << sim_conf->G) * sizeof(uint64_t));
     memset(history_table, 0, (1ULL << sim_conf->G) * sizeof(uint64_t));
+    // pattern table is initialized to 01, the weak not taken state
     memset(pattern_table, 1, (1ULL << sim_conf->P) * sizeof(uint8_t));
-
 }
 
 bool yeh_patt::predict(branch *branch, branchsim_stats *sim_stats)
@@ -154,8 +154,10 @@ bool yeh_patt::predict(branch *branch, branchsim_stats *sim_stats)
         sim_stats->num_tag_conflicts += 1;
         this->tag_store[index] = tag;
     }
+    // 00, 01->NT; 10, 11->TAKEN
     bool prediction = *smith_counter >= 2;
 
+    // update fields
     if (prediction == branch->is_taken) {
         sim_stats->num_branches_correctly_predicted += 1;
     } else {
@@ -171,6 +173,7 @@ void yeh_patt::update_predictor(branch *branch)
     uint64_t* history_register = &this->history_table[ht_index];
     uint8_t*  smith_counter    = &this->pattern_table[*history_register];
 
+    // update history register and smith counter using the helper functions
     *history_register = shift_register_update(*history_register, branch->is_taken, this->width);
     *smith_counter    = smith_counter_update(*smith_counter, branch->is_taken);
 }
@@ -187,6 +190,7 @@ void perceptron_predictor::init_predictor(branchsim_conf *sim_conf)
 {
     PIPELINE_STAGES = sim_conf->N;
 
+    // initialized relevant fields
     this->GHR                = 0;
     this->G                  = sim_conf->G;
     this->P                  = sim_conf->P;
@@ -211,6 +215,7 @@ bool perceptron_predictor::predict(branch *branch, branchsim_stats *sim_stats)
 {
     sim_stats->num_branch_instructions += 1;
 
+    // get index to index into the perceptron table, tag for comparison
     uint64_t tag   = bit_extract(branch->ip, this->tag_range);
     uint64_t index = bit_extract(branch->ip, this->pc_range);
 
@@ -223,6 +228,7 @@ bool perceptron_predictor::predict(branch *branch, branchsim_stats *sim_stats)
     int y = 0;
     int* perceptron = this->perceptron_table[index];
 
+    // predict using the indexed perceptron
     for (uint64_t i = 0; i < this->G + 1; i++) {
         x = (i == 0) ? 1 :  // x[0] = 1, otherwise if GHR bit is 1, x=1, else x=-1
                 bit_extract(this->GHR, make_pair(i - 1, i - 1)) ? 1 : -1;
@@ -249,6 +255,7 @@ void perceptron_predictor::update_predictor(branch *branch)
     int updated_weight;
     int* perceptron = this->perceptron_table[index];
 
+    // checks update condition
     if (this->current_prediction != branch->is_taken || abs(this->current_y) <= this->theta) {
         for (uint64_t i = 0; i < this->G + 1; i++) {
             x = (i == 0) ? 1 :          // x[0] = 1, otherwise if GHR bit is 1, x=1, else x=-1

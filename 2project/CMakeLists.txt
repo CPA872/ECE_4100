@@ -3,18 +3,18 @@
 cmake_minimum_required (VERSION 3.1) # Earlier versions won't support this file
 
 # C project
-project(branchsim
+project(cachesim
         DESCRIPTION "Cache hit-miss simulator"
         LANGUAGES CXX)
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 set(SRC_FILES "${CMAKE_SOURCE_DIR}/src/branchsim_driver.cpp"
-              "${CMAKE_SOURCE_DIR}/src/branchsim.cpp"
-              "${CMAKE_SOURCE_DIR}/src/branchsim.h"
-              "${CMAKE_SOURCE_DIR}/src/gshare.h"
-              "${CMAKE_SOURCE_DIR}/src/yeh_patt.h"
-)
+        "${CMAKE_SOURCE_DIR}/src/branchsim.cpp"
+        "${CMAKE_SOURCE_DIR}/src/branchsim.h"
+        "${CMAKE_SOURCE_DIR}/src/gshare.h"
+        "${CMAKE_SOURCE_DIR}/src/yeh_patt.h"
+        )
 
 # Sets required flags
 set(CMAKE_CXX_STANDARD 11)

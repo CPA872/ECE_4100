@@ -12,7 +12,7 @@ private:
     uint64_t  width;
     uint8_t*  pattern_table;  // smith counters, initialized to 01
     uint64_t* tag_store;
-    std::pair<uint64_t, uint64_t> pc_range;
+    std::pair<uint64_t, uint64_t> pc_range;  // <a, b>: ranges is inclusive
     std::pair<uint64_t, uint64_t> tag_range;
 
 public:

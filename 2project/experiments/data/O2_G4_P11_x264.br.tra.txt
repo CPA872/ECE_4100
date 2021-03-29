@@ -1,0 +1,19 @@
+SIMULATION CONFIGURATION
+G:          4
+P:          11
+N:          5
+Predictor:  Yeh-Patt
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+Total Instructions:                 97307048
+Total Branch Instructions:          10000000
+Branches Correctly Predicted:       7421095
+Branches Miss Predicted:            2578905
+Misses Per Kilo Instructions:       26
+Number of Tag conflicts             5965639
+Fraction Branch Instructions:       0.10276748
+Branch Prediction accuracy:         0.74210950
+Total Stages in the Pipeline:       5
+Branch Miss Prediction Stalls:      2
+Average CPI:                        1.05300551

@@ -15,7 +15,7 @@ private:
     bool current_prediction;
     int current_y;
 
-    int** perceptron_table;
+    int** perceptron_table;  // 2D array for perceptron table
     uint64_t* tag_store;
     std::pair<int, int> pc_range;
     std::pair<int, int> tag_range;

@@ -1,0 +1,19 @@
+SIMULATION CONFIGURATION
+G:          1
+P:          13
+N:          5
+Predictor:  PERCEPTRON
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+Total Instructions:                 48574320
+Total Branch Instructions:          10000000
+Branches Correctly Predicted:       9259945
+Branches Miss Predicted:            740055
+Misses Per Kilo Instructions:       15
+Number of Tag conflicts             547941
+Fraction Branch Instructions:       0.20587010
+Branch Prediction accuracy:         0.92599450
+Total Stages in the Pipeline:       5
+Branch Miss Prediction Stalls:      2
+Average CPI:                        1.03047104

@@ -178,18 +178,18 @@ int main(int argc, char *const argv[])
     branch_predictor_base *predictor;
     switch (sim_conf.predictor) {
 
-    case branchsim_conf::YEH_PATT:
-        predictor = new yeh_patt();
-        break;
+        case branchsim_conf::YEH_PATT:
+            predictor = new yeh_patt();
+            break;
 
-    case branchsim_conf::PERCEPTRON:
-        predictor = new perceptron_predictor();
-        break;
+        case branchsim_conf::PERCEPTRON:
+            predictor = new perceptron_predictor();
+            break;
 
-    case branchsim_conf::GSHARE:
-    default:
-        predictor = new gshare();
-        break;
+        case branchsim_conf::GSHARE:
+        default:
+            predictor = new gshare();
+            break;
     }
 
     // Initialize the predictor

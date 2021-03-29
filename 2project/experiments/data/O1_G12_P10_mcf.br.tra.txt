@@ -1,0 +1,19 @@
+SIMULATION CONFIGURATION
+G:          12
+P:          10
+N:          5
+Predictor:  Gshare
+SETUP COMPLETE - STARTING SIMULATION
+
+SIMULATION OUTPUT
+Total Instructions:                 48066074
+Total Branch Instructions:          10000000
+Branches Correctly Predicted:       9814883
+Branches Miss Predicted:            185117
+Misses Per Kilo Instructions:       3
+Number of Tag conflicts             218209
+Fraction Branch Instructions:       0.20804695
+Branch Prediction accuracy:         0.98148830
+Total Stages in the Pipeline:       5
+Branch Miss Prediction Stalls:      2
+Average CPI:                        1.00770261

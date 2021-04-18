@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cx872/Documents/ECE_4100/3project/src/procsim.h
+cstdint
+-
+cstdio
+-
+
+/home/cx872/Documents/ECE_4100/3project/src/procsim_driver.cpp
+cinttypes
+-
+cstdlib
+-
+cstring
+-
+getopt.h
+-
+unistd.h
+-
+procsim.h
+/home/cx872/Documents/ECE_4100/3project/src/procsim.h
+stdio.h
+/home/cx872/Documents/ECE_4100/3project/src/stdio.h
+iostream
+-
+fstream
+-
+cstring
+-
+

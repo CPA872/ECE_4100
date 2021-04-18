@@ -1,12 +1,16 @@
-#include <cstdio>
+//#include <cstdio>
 #include <cinttypes>
 #include <cstdlib>
 #include <cstring>
-
 #include <getopt.h>
 #include <unistd.h>
 
 #include "procsim.h"
+#include "stdio.h"
+
+#include <iostream>
+#include <fstream>
+#include <cstring>
 
 FILE* inFile = stdin;
 
@@ -17,7 +21,7 @@ static void print_help_and_exit(void)
     fprintf(stderr, "  -f F\t\tNumber of instructions to fetch\n");
     fprintf(stderr, "  -p P\t\tNumber of PRegs\n");
     fprintf(stderr, "  -j J\t\tNumber of ADD/BR FUs\n");
-    fprintf(stderr, "  -k K\t\tNumber of MUL FUs\n");
+    fprintf(stderr, "  -k K\t\tNumber of FU_MUL FUs\n");
     fprintf(stderr, "  -l L\t\tNumber of LOAD/STORE FUs\n");
     fprintf(stderr, "  -r R\t\tNumber of entries in the ROB\n");
     fprintf(stderr, "  -i I\t\tInterrupt frequency (cycles)\n");
@@ -41,18 +45,18 @@ static void print_config(procsim_conf *config)
 }
 
 // Prints statistics at the end of the simulation
-static void print_statistics(procsim_stats* stats) {
-    printf("\n\n");
-    printf("Processor stats:\n");
-    printf("Total instructions retired:     %" PRIu64 "\n", stats->instructions_retired);
-    printf("Number of exceptions:           %" PRIu64 "\n", stats->num_exceptions);
-    printf("Total Branch instructions:      %" PRIu64 "\n", stats->branch_instructions);
-    printf("Total load instructions:        %" PRIu64 "\n", stats->load_instructions);
-    printf("Total store instructions:       %" PRIu64 "\n", stats->store_instructions);
-    printf("Average Dispatch Queue size:    %f\n", stats->average_disp_queue_size);
-    printf("Maximum Dispatch Queue size:    %" PRIu64 "\n", stats->max_disp_queue_size);
-    printf("Average instructions retired:   %f\n", stats->average_ipc);
-    printf("Final Cycle count:              %" PRIu64 "\n", stats->cycle_count);
+static void print_statistics(procsim_stats* stats, FILE* summary) {
+    fprintf(summary, "\n\n");
+    fprintf(summary, "Processor stats:\n");
+    fprintf(summary, "Total instructions retired:     %" PRIu64 "\n", stats->instructions_retired);
+    fprintf(summary, "Number of exceptions:           %" PRIu64 "\n", stats->num_exceptions);
+    fprintf(summary, "Total Branch instructions:      %" PRIu64 "\n", stats->branch_instructions);
+    fprintf(summary, "Total load instructions:        %" PRIu64 "\n", stats->load_instructions);
+    fprintf(summary, "Total store instructions:       %" PRIu64 "\n", stats->store_instructions);
+    fprintf(summary, "Average Dispatch Queue size:    %f\n", stats->average_disp_queue_size);
+    fprintf(summary, "Maximum Dispatch Queue size:    %" PRIu64 "\n", stats->max_disp_queue_size);
+    fprintf(summary, "Average instructions retired:   %f\n", stats->average_ipc);
+    fprintf(summary, "Final Cycle count:              %" PRIu64 "\n", stats->cycle_count);
 }
 
 /* Function to read instruction from the input trace. Populates the inst struct
@@ -90,10 +94,10 @@ int main(int argc, char* argv[]) {
         print_help_and_exit();
     }
 
-
     int opt;
 
     printf("Number of arguments when files passed %d\n", argc);
+
 
     // Default configuration setup
     procsim_conf conf = {   .F = DEFAULT_F,
@@ -104,6 +108,8 @@ int main(int argc, char* argv[]) {
                             .R = DEFAULT_R,
                             .I = DEFAULT_I
                         };
+
+    std::string trace_name = "";
 
     while(-1 != (opt = getopt(argc, argv, "f:p:j:k:l:r:y:i:t:h"))) {
         switch(opt) {
@@ -130,6 +136,7 @@ int main(int argc, char* argv[]) {
             break;
         case 't':
             inFile = fopen(optarg, "r");
+            trace_name = optarg;
             if (inFile == NULL) {
                 fprintf(stderr, "Failed to open %s for reading\n", optarg);
                 print_help_and_exit();
@@ -141,6 +148,21 @@ int main(int argc, char* argv[]) {
             break;
         }
     }
+
+    char filename[100];
+
+    trace_name = trace_name.substr(strlen("traces/"), strlen(trace_name.c_str()));
+    std::cout << trace_name;
+    FILE* summary;
+    char tracename[30];
+    strncpy(tracename, trace_name.c_str(), strlen(trace_name.c_str()) - strlen(".trace"));
+    tracename[strlen(trace_name.c_str()) - strlen(".trace")] = '\0';
+    sprintf(filename, "experiments/data/f%d_p%d_j%d_k%d_l%d_r%d_i%d_%s.data", conf.F, conf.P, conf.J, conf.K, conf.L, conf.R, conf.I, tracename);
+    std::cout << "dest file name" << filename << std::endl;
+    summary = fopen(filename, "w");
+    std::cout << "opened file\n";
+
+
 
     print_config(&conf); // Print run configuration
 
@@ -155,7 +177,8 @@ int main(int argc, char* argv[]) {
 
     fclose(inFile); // release file descriptor memory
 
-    print_statistics(&stats);
+    print_statistics(&stats, summary);
 
+    fclose(summary);
     return 0;
 }

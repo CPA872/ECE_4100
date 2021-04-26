@@ -43,32 +43,68 @@ void MOESIF_protocol::process_snoop_request (Mreq *request)
 
 inline void MOESIF_protocol::do_cache_F (Mreq *request)
 {
-
+    switch (request->msg) {
+    case LOAD:
+    case STORE:
+    default:
+        request->print_msg (my_table->moduleID, "ERROR");
+        fatal_error ("Client: M state shouldn't see this message\n");
+    }
 }
 
 inline void MOESIF_protocol::do_cache_I (Mreq *request)
 {
-
+    switch (request->msg) {
+    case LOAD:
+    case STORE:
+    default:
+        request->print_msg (my_table->moduleID, "ERROR");
+        fatal_error ("Client: M state shouldn't see this message\n");
+    }
 }
 
 inline void MOESIF_protocol::do_cache_S (Mreq *request)
 {
-
+    switch (request->msg) {
+    case LOAD:
+    case STORE:
+    default:
+        request->print_msg (my_table->moduleID, "ERROR");
+        fatal_error ("Client: M state shouldn't see this message\n");
+    }
 }
 
 inline void MOESIF_protocol::do_cache_E (Mreq *request)
 {
-
+    switch (request->msg) {
+    case LOAD:
+    case STORE:
+    default:
+        request->print_msg (my_table->moduleID, "ERROR");
+        fatal_error ("Client: M state shouldn't see this message\n");
+    }
 }
 
 inline void MOESIF_protocol::do_cache_O (Mreq *request)
 {
-
+    switch (request->msg) {
+    case LOAD:
+    case STORE:
+    default:
+        request->print_msg (my_table->moduleID, "ERROR");
+        fatal_error ("Client: M state shouldn't see this message\n");
+    }
 }
 
 inline void MOESIF_protocol::do_cache_M (Mreq *request)
 {
-
+    switch (request->msg) {
+    case LOAD:
+    case STORE:
+    default:
+        request->print_msg (my_table->moduleID, "ERROR");
+        fatal_error ("Client: M state shouldn't see this message\n");
+    }
 }
 
 inline void MOESIF_protocol::do_snoop_F (Mreq *request)
@@ -100,6 +136,3 @@ inline void MOESIF_protocol::do_snoop_M (Mreq *request)
 {
 
 }
-
-
-

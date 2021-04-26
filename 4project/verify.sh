@@ -53,7 +53,7 @@ do
 	do
 		./sim_trace -p $p -t $t > output.log 2>&1
 		diff ${t}/${p}_validation.txt output.log > ../diff.log 2>&1
-		if [ -s diff.log ];
+		if [ -s ../diff.log ];
 		then
 			echo "${t}: FAIL"
 			echo "Please check diff.log for details"

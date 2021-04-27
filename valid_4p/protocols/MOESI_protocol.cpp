@@ -191,7 +191,6 @@ inline void MOESI_protocol::do_snoop_O(Mreq *request) {
         break;
 
     case GETM:
-        set_shared_line();
         send_DATA_on_bus(request->addr, request->src_mid);
         this->state = MOESI_CACHE_I;
         break;
@@ -291,20 +290,16 @@ inline void MOESI_protocol::do_snoop_OM(Mreq *request) {
     switch (request->msg) {
     case GETS:
     // if unique copy, can serve other's READ request many times
-        if (!get_shared_line()) {  
-            send_DATA_on_bus(request->addr, request->src_mid);
-            set_shared_line();
-        }
+        send_DATA_on_bus(request->addr, request->src_mid);
+        set_shared_line();
         break;
 
     case GETM:
     // if unique copy, can serve other's WRITE request but only once,
     // then enter IM state to complete O->M transition
-        if (!get_shared_line()) {  
-            send_DATA_on_bus(request->addr, request->src_mid);
-            set_shared_line();
-            this->state = MOESI_CACHE_IM;
-        }
+        send_DATA_on_bus(request->addr, request->src_mid);
+        set_shared_line();
+        this->state = MOESI_CACHE_IM;
         break;
 
     case DATA:
@@ -325,7 +320,7 @@ inline void MOESI_protocol::do_snoop_SM(Mreq *request) {
     case GETS:
         set_shared_line();
         break;
-        
+
     case GETM:
         break;
 

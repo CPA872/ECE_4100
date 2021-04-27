@@ -37,6 +37,8 @@ void MOESIF_protocol::process_cache_request (Mreq *request)
     case MOESIF_CACHE_OM:   do_cache_OM(request);       break;
     case MOESIF_CACHE_SM:   do_cache_SM(request);       break;
     case MOESIF_CACHE_F:    do_cache_F(request);        break;
+    case MOESIF_CACHE_FM:   do_cache_FM(request);       break;
+    // FM
     default:                fatal_error ("Invalid Cache State for MOESIF Protocol\n");
     }
 }
@@ -54,6 +56,8 @@ void MOESIF_protocol::process_snoop_request (Mreq *request)
     case MOESIF_CACHE_OM:   do_snoop_OM(request);       break;
     case MOESIF_CACHE_SM:   do_snoop_SM(request);       break;
     case MOESIF_CACHE_F:    do_snoop_F(request);        break;
+    case MOESIF_CACHE_FM:   do_snoop_FM(request);       break;
+
     default:                fatal_error ("Invalid SNOOPER State for MOESIF Protocol\n");
     }
 }
@@ -62,7 +66,7 @@ inline void MOESIF_protocol::do_cache_I(Mreq *request) {
     switch (request->msg) {
     case LOAD:
         send_GETS(request->addr);
-        this->state = MOESIF_CACHE_ISE;  
+        this->state = MOESIF_CACHE_ISE;  // might go to eather S or E
         Sim->cache_misses += 1;
         break;
 
@@ -79,9 +83,7 @@ inline void MOESIF_protocol::do_cache_I(Mreq *request) {
     }
 }
 
-inline void MOESIF_protocol::do_snoop_I(Mreq *request) {
-
-}
+inline void MOESIF_protocol::do_snoop_I(Mreq *request) { }
 
 inline void MOESIF_protocol::do_cache_S(Mreq *request) {
     switch (request->msg) {
@@ -148,7 +150,7 @@ inline void MOESIF_protocol::do_snoop_E(Mreq *request) {
     case GETS:  // discards exclusiveness upon other cores' requests
         send_DATA_on_bus(request->addr, request->src_mid);
         set_shared_line();
-        this->state = MOESIF_CACHE_S;
+        this->state = MOESIF_CACHE_F;
         break;
 
     case GETM:
@@ -254,7 +256,7 @@ inline void MOESIF_protocol::do_snoop_ISE(Mreq *request) {
         send_DATA_to_proc(request->addr);
 
         // Depending on whether the line is shared, set to either S or E
-        if (get_shared_line()) {  // if line indicates this block is shared
+        if (get_shared_line()) {  // if this block is shared
             this->state = MOESIF_CACHE_S;
         } else {
             this->state = MOESIF_CACHE_E;
@@ -292,20 +294,14 @@ inline void MOESIF_protocol::do_snoop_OM(Mreq *request) {
     switch (request->msg) {
     case GETS:
     // if unique copy, can serve other's READ request many times
-        if (!get_shared_line()) {  
-            send_DATA_on_bus(request->addr, request->src_mid);
-            set_shared_line();
-        }
+        send_DATA_on_bus(request->addr, request->src_mid);
         break;
 
     case GETM:
     // if unique copy, can serve other's WRITE request but only once,
     // then enter IM state to complete O->M transition
-        if (!get_shared_line()) {  
-            send_DATA_on_bus(request->addr, request->src_mid);
-            set_shared_line();
-            this->state = MOESIF_CACHE_IM;
-        }
+        send_DATA_on_bus(request->addr, request->src_mid);
+        this->state = MOESIF_CACHE_IM;
         break;
 
     case DATA:
@@ -342,10 +338,67 @@ inline void MOESIF_protocol::do_snoop_SM(Mreq *request) {
 }
 
 inline void MOESIF_protocol::do_cache_F(Mreq *request) {
+    switch (request->msg) {
+    case LOAD:  
+        send_DATA_to_proc(request->addr);
+        break;
 
+    case STORE:
+        Sim->cache_misses += 1;
+        send_GETM(request->addr);
+        this->state = MOESIF_CACHE_FM;
+        break;
+        
+    default:
+        request->print_msg (my_table->moduleID, "ERROR");
+        fatal_error ("Client: M state CACHE shouldn't see this message\n");
+    }
 }
 
 inline void MOESIF_protocol::do_snoop_F(Mreq *request) {
+    switch (request->msg) {
+    case GETS:  // as forwarder, serve the data to requester
+        set_shared_line();
+        send_DATA_on_bus(request->addr, request->src_mid);
+        break;
+        
+    case GETM:  
+        set_shared_line();
+        send_DATA_on_bus(request->addr, request->src_mid);
+        this->state = MOESIF_CACHE_I;
+        break;
 
+    case DATA:
+        break;
+
+    default:
+        request->print_msg (my_table->moduleID, "ERROR");
+        fatal_error ("Client: SM state SNOOPER shouldn't see this message\n");
+    }
 }
 
+inline void MOESIF_protocol::do_cache_FM(Mreq *request) { }
+
+inline void MOESIF_protocol::do_snoop_FM(Mreq *request) {
+    switch (request->msg) {
+    case GETS:
+        send_DATA_on_bus(request->addr, request->src_mid);
+        set_shared_line();
+        break;
+
+    case GETM:
+        send_DATA_on_bus(request->addr, request->src_mid);
+        set_shared_line();
+        this->state = MOESIF_CACHE_IM;
+        break;
+
+    case DATA:
+        send_DATA_to_proc(request->addr);
+        this->state = MOESIF_CACHE_M;
+        break;
+
+    default:
+        request->print_msg (my_table->moduleID, "ERROR");
+        fatal_error ("Client: OM state SNOOPER shouldn't see this message\n");
+    }
+}

@@ -38,7 +38,7 @@ void MOESIF_protocol::process_cache_request (Mreq *request)
     case MOESIF_CACHE_SM:   do_cache_SM(request);       break;
     case MOESIF_CACHE_F:    do_cache_F(request);        break;
     case MOESIF_CACHE_FM:   do_cache_FM(request);       break;
-    // FM
+
     default:                fatal_error ("Invalid Cache State for MOESIF Protocol\n");
     }
 }
